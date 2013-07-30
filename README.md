@@ -3,6 +3,7 @@ This is a chainable weather underground client for node.js
 # Install
     npm install wundergroundnode
     var Wunderground = require('wundergroundnode');
+    var myKey = '12312314';
     var wunderground = new Wunderground(myKey);
 
 # How To Use
