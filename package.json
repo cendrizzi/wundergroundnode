@@ -26,13 +26,13 @@
         "mocha": "*",
         "should": "*"
     },
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/cendrizzi/wundergroundnode.git"
-    },
     "engines": {
         "node": ">=0.8.14"
     },
     "readmeFilename": "README.md",
-    "_id": "wundergroundnode@0.1.0"
+    "_id": "wundergroundnode@0.1.0",
+    "repository" : {
+        "type" : "git",
+        "url" : "https://github.com/cendrizzi/wundergroundnode"
+    }
 }
