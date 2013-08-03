@@ -1,6 +1,6 @@
 {
     "name": "wundergroundnode",
-    "version": "0.1.1",
+    "version": "0.2.0",
     "main": "./lib/wundergroundnode.js",
     "description": "Weather Underground chainable API for nodeJS",
     "homepage": "http://www.github.com/cendrizzi/wundergroundnode",
@@ -33,7 +33,7 @@
         "node": ">=0.8.14"
     },
     "readmeFilename": "README.md",
-    "_id": "wundergroundnode@0.1.1",
+    "_id": "wundergroundnode@0.2.0",
     "repository" : {
         "type" : "git",
         "url" : "https://github.com/cendrizzi/wundergroundnode"
