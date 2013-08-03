@@ -1,6 +1,7 @@
 require('should');
 var Wunderground = require('./../lib/wundergroundnode');
-var fs          = require('fs')
+var fs          = require('fs');
+var moment      = require('moment');
 
 // Callback on connect
 cachedDevKey = null;
@@ -102,5 +103,26 @@ describe('Testing Weather Underground Node Client:', function(){
             })
         })
 
+    });
+
+    it('Test simulation code', function(done){
+        var wunderground = new Wunderground('abcd');
+        var firstMoment  = null;
+
+        wunderground.conditions().simulateHour('84111', function(err, response){
+            err.should.be.false;
+            firstMoment = moment(response.current_observation.local_time_rfc822, 'ddd, DD MMM YYYY HH:mm:ss Z');
+            // console.log(response);
+        });
+
+        wunderground.conditions().simulateHour('84111', function(err, response){
+            err.should.be.false;
+            var secondMoment = moment(response.current_observation.local_time_rfc822, 'ddd, DD MMM YYYY HH:mm:ss Z');
+
+            var hourDifference = secondMoment.diff(firstMoment, 'hours');
+            hourDifference.should.equal(1);
+            // console.log(response, firstMoment.format(), secondMoment.format());
+            done();
+        });
     });
 });

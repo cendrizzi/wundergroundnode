@@ -20,9 +20,10 @@
         }
     ],
     "dependencies": {
-        "request": "= 2.9.201",
+        "request": "2.x",
         "limiter": "=1.0.3",
-        "underscore" : "1.x"
+        "underscore" : "1.x",
+        "moment": "2.x"
     },
     "devDependencies": {
         "mocha": "*",
