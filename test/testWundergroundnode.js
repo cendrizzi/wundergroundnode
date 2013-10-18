@@ -1,10 +1,9 @@
 require('should');
 var Wunderground = require('./../lib/wundergroundnode');
 var fs          = require('fs');
-var moment      = require('moment');
 
 // Callback on connect
-cachedDevKey = null;
+var cachedDevKey = null;
 var getDevKey = function(callback){
     "use strict";
 
@@ -14,8 +13,6 @@ var getDevKey = function(callback){
     }
 
     fs.readFile(__dirname+'/devkey', 'utf8', function (err,data) {
-        "use strict";
-
         if (err) {
             return console.error(err);
         }
@@ -23,7 +20,7 @@ var getDevKey = function(callback){
         cachedDevKey = data;
         callback(cachedDevKey);
     });
-}
+};
 
 
 
@@ -37,8 +34,8 @@ describe('Testing Weather Underground Node Client:', function(){
             wunderground.conditions().request('84111', function(err, response){
                 response.should.have.property('current_observation');
                 done();
-            })
-        })
+            });
+        });
 
     });
 
@@ -49,8 +46,8 @@ describe('Testing Weather Underground Node Client:', function(){
             wunderground.geolookup().request('84111', function(err, response){
                 response.should.have.property('location');
                 done();
-            })
-        })
+            });
+        });
 
     });
 
@@ -61,8 +58,8 @@ describe('Testing Weather Underground Node Client:', function(){
             wunderground.astronomy().request('84111', function(err, response){
                 response.should.have.property('moon_phase');
                 done();
-            })
-        })
+            });
+        });
 
     });
 
@@ -76,8 +73,8 @@ describe('Testing Weather Underground Node Client:', function(){
                 response.should.have.property('forecast');
                 response.should.have.property('history');
                 done();
-            })
-        })
+            });
+        });
 
     });
 
@@ -85,11 +82,11 @@ describe('Testing Weather Underground Node Client:', function(){
 
         getDevKey(function(key){
             var wunderground = new Wunderground(key);
-            wunderground.request('84111', function(err, response){
-                err.should.be.true;
+            wunderground.request('84111', function(err){
+                err.should.equal(true);
                 done();
-            })
-        })
+            });
+        });
 
     });
 
@@ -97,32 +94,34 @@ describe('Testing Weather Underground Node Client:', function(){
 
         getDevKey(function(key){
             var wunderground = new Wunderground(key);
-            wunderground.conditions().request(false, function(err, response){
-                err.should.be.true;
+            wunderground.conditions().request(false, function(err){
+                err.should.equal(true);
                 done();
-            })
-        })
+            });
+        });
 
     });
 
-    it('Test simulation code', function(done){
-        var wunderground = new Wunderground('abcd');
-        var firstMoment  = null;
-
-        wunderground.conditions().simulateHour('84111', function(err, response){
-            err.should.be.false;
-            firstMoment = moment(response.current_observation.local_time_rfc822, 'ddd, DD MMM YYYY HH:mm:ss Z');
-            // console.log(response);
+    it('Test a historical call with string date', function(done){
+        getDevKey(function(key){
+            var wunderground = new Wunderground(key);
+            wunderground.history('19800322', '84111', function(err, response){
+                err.should.equal(false);
+                response.should.have.property('history');
+                done();
+            });
         });
+    });
 
-        wunderground.conditions().simulateHour('84111', function(err, response){
-            err.should.be.false;
-            var secondMoment = moment(response.current_observation.local_time_rfc822, 'ddd, DD MMM YYYY HH:mm:ss Z');
-
-            var hourDifference = secondMoment.diff(firstMoment, 'hours');
-            hourDifference.should.equal(1);
-            // console.log(response, firstMoment.format(), secondMoment.format());
-            done();
+    it('Test a historical call with date object', function(done){
+        getDevKey(function(key){
+            var wunderground = new Wunderground(key);
+            var day = new Date(1980, 3, 22);
+            wunderground.history(day, '84111', function(err, response){
+                err.should.equal(false);
+                response.should.have.property('history');
+                done();
+            });
         });
     });
 });
