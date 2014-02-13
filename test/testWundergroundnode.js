@@ -51,6 +51,18 @@ describe('Testing Weather Underground Node Client:', function(){
 
     });
 
+    it('Request for alerts.', function(done){
+
+        getDevKey(function(key){
+            var wunderground = new Wunderground(key);
+            wunderground.alerts().request('84111', function(err, response){
+                response.should.have.property('alerts');
+                done();
+            });
+        });
+
+    });
+
     it('Request for astronomy.', function(done){
 
         getDevKey(function(key){
