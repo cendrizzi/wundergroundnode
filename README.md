@@ -21,6 +21,7 @@ The available resource calls are the following (you must include one in your req
 - yesterday
 - geolookup
 - astronomy
+- alerts (thanks to drewlander for this)
 
 The documentation for each resource can be found here: http://www.wunderground.com/weather/api/d/docs?d=index. That also covers how to perform queries against their api.
 
