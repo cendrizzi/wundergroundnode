@@ -1,41 +1,47 @@
 {
-    "name": "wundergroundnode",
-    "version": "0.3.0",
-    "main": "./lib/wundergroundnode.js",
-    "description": "Weather Underground chainable API for nodeJS",
-    "homepage": "http://www.github.com/cendrizzi/wundergroundnode",
-    "keywords": [
-        "weather",
-        "wunderground",
-        "weather underground",
-        "weather.com"
-    ],
-    "author": {
-        "name": "Clark Endrizzi"
-    },
-    "licenses": [
-        {
-            "type": "MIT",
-            "url": "https://github.com/cendrizzi/wundergroundnode/LICENSE.txt"
-        }
-    ],
-    "dependencies": {
-        "request": "2.x",
-        "limiter": "=1.0.3",
-        "underscore" : "1.x",
-        "moment": "2.x"
-    },
-    "devDependencies": {
-        "mocha": "*",
-        "should": "*"
-    },
-    "engines": {
-        "node": ">=0.8.14"
-    },
-    "readmeFilename": "README.md",
-    "_id": "wundergroundnode@0.2.1",
-    "repository" : {
-        "type" : "git",
-        "url" : "https://github.com/cendrizzi/wundergroundnode"
+  "name": "wundergroundnode",
+  "version": "0.4.0",
+  "main": "./lib/wundergroundnode.js",
+  "description": "Weather Underground chainable API for nodeJS",
+  "homepage": "http://www.github.com/cendrizzi/wundergroundnode",
+  "keywords": [
+    "weather",
+    "wunderground",
+    "weather underground",
+    "weather.com"
+  ],
+  "author": "Clark Endrizzi",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/cendrizzi/wundergroundnode/LICENSE.txt"
     }
+  ],
+  "dependencies": {
+    "request": "2.x",
+    "limiter": "=1.0.3",
+    "underscore": "1.x",
+    "moment": "2.x"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*"
+  },
+  "engines": {
+    "node": ">=0.8.14"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cendrizzi/wundergroundnode"
+  },
+  "bugs": {
+    "url": "https://github.com/cendrizzi/wundergroundnode/issues"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "license": "ISC"
 }
