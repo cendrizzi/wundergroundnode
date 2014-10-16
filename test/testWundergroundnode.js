@@ -27,6 +27,8 @@ var getDevKey = function(callback){
 describe('Testing Weather Underground Node Client:', function(){
     "use strict";
 
+    this.timeout(4000);
+
     it('Simple single call for conditions.', function(done){
 
         getDevKey(function(key){
@@ -75,7 +77,19 @@ describe('Testing Weather Underground Node Client:', function(){
 
     });
 
-    it('Chain the most of the rest resources.', function(done){
+    it('Request for 10 day forecast.', function(done){
+
+        getDevKey(function(key){
+            var wunderground = new Wunderground(key);
+            wunderground.forecastTenDay().request('84111', function(err, response){
+                response.should.have.property('forecast');
+                done();
+            });
+        });
+
+    });
+
+    it('Chain most of the rest resources.', function(done){
 
         getDevKey(function(key){
             var wunderground = new Wunderground(key);
