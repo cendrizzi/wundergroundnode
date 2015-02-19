@@ -21,6 +21,7 @@ The available resource calls are the following (you must include one in your req
 - yesterday
 - geolookup
 - astronomy
+- planner
 - alerts (thanks to drewlander for this)
 
 The documentation for each resource can be found here: http://www.wunderground.com/weather/api/d/docs?d=index. That also covers how to perform queries against their api.
@@ -34,6 +35,13 @@ So to get the current conditions you would use the following code:
 Where the real fun comes in, however, is when you want more than one resource in a single call. This functionality is crucial to save on weather underground costs. So extending the example, lets also get the forecast:
 
     wunderground.conditions().forecast().request('84111', function(err, response){
+        console.log(response);
+    }
+
+Finally, planner is a little unique in how it is used. It has two parameters, the start and end dates for the range. At the time of this writing wunderground limits this to 30 days max. Notice that the parameters include the "/" character for readability.
+
+    // Requests for planning information from January 13th to the 15th.
+    wunderground.planner('01/13', '01/15').request('84111', function(err, response){ 
         console.log(response);
     }
 

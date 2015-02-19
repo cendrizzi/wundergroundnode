@@ -89,6 +89,18 @@ describe('Testing Weather Underground Node Client:', function(){
 
     });
 
+    it('Request for planner data.', function(done){
+
+        getDevKey(function(key){
+            var wunderground = new Wunderground(key);
+            wunderground.planner('01/14', '01/15').request('84111', function(err, response){
+                response.should.have.property('trip');
+                done();
+            });
+        });
+
+    });
+
     it('Chain most of the rest resources.', function(done){
 
         getDevKey(function(key){
