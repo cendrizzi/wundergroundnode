@@ -162,4 +162,25 @@ describe('Testing Weather Underground Node Client:', function(){
             });
         });
     });
+
+    it('Test a historical call with no day', function(done){
+        getDevKey(function(key){
+            var wunderground = new Wunderground(key);
+            wunderground.history('', '84111', function(err, response){
+                err.should.equal(true);
+                done();
+            });
+        });
+    });
+
+    it('Test a historical call with no query', function(done){
+        getDevKey(function(key){
+            var wunderground = new Wunderground(key);
+            wunderground.history('19800322', '', function(err, response){
+                err.should.equal(true);
+                done();
+            });
+        });
+    });
+
 });
