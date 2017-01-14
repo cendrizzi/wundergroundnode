@@ -116,6 +116,22 @@ describe('Testing Weather Underground Node Client:', function(){
 
     });
 
+
+    it('Adding settings to the request.', function(done){
+        getDevKey(function(key){
+            var wunderground = new Wunderground(key);
+            // test only that the request still works, lib does not provide way of cheking the sent url now
+            wunderground.hourlyForecast().hourlyTenDayForecast().forecast().almanac().yesterday().settings('lang:CZ').request('84111', function(err, response){
+                response.should.have.property('almanac');
+                response.should.have.property('hourly_forecast');
+                response.should.have.property('forecast');
+                response.should.have.property('history');
+                done();
+            });
+        });
+
+    });
+
     it('Call without a resource', function(done){
 
         getDevKey(function(key){
