@@ -4,7 +4,9 @@ This is a chainable weather underground client for node.js
     npm install wundergroundnode
     var Wunderground = require('wundergroundnode');
     var myKey = '12312314';
-    var wunderground = new Wunderground(myKey);
+    var wunderground = new Wunderground(myKey, language_code);
+    
+Parameter "language_code" is optional, if missing English will be used. For accepted values refers to https://www.wunderground.com/weather/api/d/docs?d=language-support
 
 # How To Use
 The syntax follows a simple pattern:
