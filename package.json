@@ -1,6 +1,6 @@
 {
   "name": "wundergroundnode",
-  "version": "0.11.0",
+  "version": "0.12.0",
   "main": "./lib/wundergroundnode.js",
   "description": "Weather Underground chainable API for nodeJS",
   "homepage": "http://www.github.com/cendrizzi/wundergroundnode",
