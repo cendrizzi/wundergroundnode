@@ -1,5 +1,10 @@
 This is a chainable weather underground client for node.js
 
+# Differences
+The only difference to the original is the additional resource calls
+- lang(code)
+to switch languages. See https://www.wunderground.com/weather/api/d/docs?d=language-support for the available language codes.
+
 # Install
     npm install wundergroundnode
     var Wunderground = require('wundergroundnode');
@@ -8,9 +13,9 @@ This is a chainable weather underground client for node.js
 
 # How To Use
 The syntax follows a simple pattern:
-    
+
     wunderground.[resource calls(s)].request(myQuery, callback);
-    
+
 The available resource calls are the following (you must include one in your request):
 
 - conditions
@@ -46,7 +51,7 @@ Finally, planner is a little unique in how it is used. It has two parameters, th
 
 ```js
 // Requests for planning information from January 13th to the 15th.
-wunderground.planner('01/13', '01/15').request('84111', function(err, response){ 
+wunderground.planner('01/13', '01/15').request('84111', function(err, response){
     console.log(response);
 }
 ```
@@ -68,7 +73,7 @@ In order to run unit tests you need to include a file called "devkey" in the tes
 Then simply run this command:
 
     make test
-    
+
 If you have instanbul installed globally you can also run the tests with code coverage results:
 
     make coverage
